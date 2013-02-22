@@ -1,0 +1,11 @@
+location / {
+    uwsgi_pass unix:///var/run/princexml.sock;
+    include uwsgi_params;
+    uwsgi_param PDF_OUTPUT_DIRECTORY /tmp/pdf;
+    uwsgi_param PDF_BASE_URL http://localhost/pdf;
+}
+
+location /pdf/ {
+    autoindex on;
+    root /tmp/;
+}
